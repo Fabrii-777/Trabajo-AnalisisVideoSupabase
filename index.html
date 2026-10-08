@@ -91,7 +91,28 @@
     }
 
     /* =======================================================
-       2. BARRA DE NAVEGACIÓN (NAVBAR)
+       2. CANVAS DEL GLOW CURSOR (REACT BITS)
+       ======================================================= */
+    #glow-cursor-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      user-select: none;
+      z-index: 99999;
+      mix-blend-mode: screen;
+    }
+
+    @media (hover: none) and (pointer: coarse) {
+      #glow-cursor-canvas {
+        display: none !important;
+      }
+    }
+
+    /* =======================================================
+       3. BARRA DE NAVEGACIÓN (NAVBAR)
        ======================================================= */
     .navbar {
       position: sticky;
@@ -140,7 +161,7 @@
     }
 
     /* =======================================================
-       3. HERO / ENCABEZADO
+       4. HERO / ENCABEZADO
        ======================================================= */
     .hero {
       background: linear-gradient(135deg, var(--dark-navy) 0%, #0a1120 100%);
@@ -208,7 +229,7 @@
     }
 
     /* =======================================================
-       4. SECCIÓN INTRODUCCIÓN
+       5. SECCIÓN INTRODUCCIÓN
        ======================================================= */
     .section {
       padding: 4.5rem 0;
@@ -229,7 +250,7 @@
     }
 
     /* =======================================================
-       5. TARJETAS DE CONCEPTOS
+       6. TARJETAS DE CONCEPTOS
        ======================================================= */
     .concepts-grid {
       display: grid;
@@ -281,7 +302,7 @@
     }
 
     /* =======================================================
-       6. CUESTIONARIO (12 PREGUNTAS)
+       7. CUESTIONARIO (12 PREGUNTAS)
        ======================================================= */
     .questions-wrapper {
       display: flex;
@@ -342,7 +363,7 @@
     }
 
     /* =======================================================
-       7. SECCIÓN APLICACIÓN PRÁCTICA Y CÓDIGO
+       8. SECCIÓN APLICACIÓN PRÁCTICA Y CÓDIGO
        ======================================================= */
     .steps-timeline {
       display: grid;
@@ -425,7 +446,7 @@
     .token-comment { color: #64748b; font-style: italic; }
 
     /* =======================================================
-       8. RECURSOS VISUALES / MOCKUPS
+       9. RECURSOS VISUALES / MOCKUPS
        ======================================================= */
     .visual-grid {
       display: grid;
@@ -453,7 +474,6 @@
       margin-bottom: 1.2rem;
     }
 
-    /* Mockup visual de tabla PostgreSQL */
     .db-table-mockup {
       width: 100%;
       border-collapse: collapse;
@@ -479,7 +499,6 @@
       background-color: #f8fafc;
     }
 
-    /* Mockup petición Postman */
     .rest-mockup {
       background-color: #0b1120;
       border-radius: 8px;
@@ -507,7 +526,7 @@
     .post-badge { background-color: #16a34a; }
 
     /* =======================================================
-       9. CONCLUSIÓN Y FUENTES
+       10. CONCLUSIÓN Y FUENTES
        ======================================================= */
     .conclusion-box {
       background: linear-gradient(135deg, var(--white) 0%, var(--mint-bg) 100%);
@@ -556,7 +575,7 @@
     }
 
     /* =======================================================
-       10. PIE DE PÁGINA (FOOTER)
+       11. PIE DE PÁGINA (FOOTER)
        ======================================================= */
     footer {
       background-color: var(--dark-navy);
@@ -577,18 +596,16 @@
     }
 
     /* =======================================================
-       11. RESPONSIVE DESIGN (MEDIA QUERIES)
+       12. RESPONSIVE DESIGN (MEDIA QUERIES)
        ======================================================= */
     @media (max-width: 900px) {
       .hero-content {
         grid-template-columns: 1fr;
         gap: 2rem;
       }
-
       .hero h1 {
         font-size: 2.2rem;
       }
-
       .question-answer {
         padding-left: 0;
         margin-top: 0.6rem;
@@ -597,25 +614,20 @@
 
     @media (max-width: 768px) {
       .nav-links {
-        display: none; /* En pantallas pequeñas se prioriza la lectura continua */
+        display: none;
       }
-
       .navbar-container {
         justify-content: center;
       }
-
       .section {
         padding: 3.2rem 0;
       }
-
       .section-title {
         font-size: 1.7rem;
       }
-
       .hero {
         padding: 3.5rem 0;
       }
-
       .intro-box, .question-item, .conclusion-box {
         padding: 1.5rem;
       }
@@ -688,35 +700,30 @@
       <p class="section-desc">Los cinco pilares técnicos explicados de manera sencilla</p>
 
       <div class="concepts-grid">
-        <!-- Tarjeta 1 -->
         <div class="concept-card">
           <div class="concept-icon">☁️</div>
           <h3>BaaS (Backend as a Service)</h3>
           <p>Es como alquilar un backend completo ya programado y listo en la nube. Te da base de datos, seguridad y login para que vos como desarrollador solo te enfoques en el diseño y la interfaz del usuario.</p>
         </div>
 
-        <!-- Tarjeta 2 -->
         <div class="concept-card">
           <div class="concept-icon">⚡</div>
           <h3>Supabase</h3>
           <p>La alternativa de código abierto a Firebase. Te brinda un panel web para administrar datos en tiempo real, crear tablas interactivas y obtener endpoints listos para consumir sin codear el servidor.</p>
         </div>
 
-        <!-- Tarjeta 3 -->
         <div class="concept-card">
           <div class="concept-icon">🐘</div>
           <h3>PostgreSQL</h3>
           <p>Un motor de base de datos relacional potente, seguro y clásico. Guarda la información en tablas organizadas por filas y columnas, con tipado estricto (números, texto, booleanos, fechas).</p>
         </div>
 
-        <!-- Tarjeta 4 -->
         <div class="concept-card">
           <div class="concept-icon">🔌</div>
           <h3>REST API</h3>
           <p>El "puente" de comunicación entre tu sitio web y la base de datos. Permite pedir o mandar datos a través de peticiones HTTP estándares como <code>GET</code>, <code>POST</code>, <code>PATCH</code> y <code>DELETE</code>.</p>
         </div>
 
-        <!-- Tarjeta 5 -->
         <div class="concept-card">
           <div class="concept-icon">🔑</div>
           <h3>API Key / Anon Key</h3>
@@ -733,19 +740,16 @@
       <p class="section-desc">Las 12 preguntas resueltas con claridad y lenguaje fluido</p>
 
       <div class="questions-wrapper">
-        
-        <!-- Pregunta 1 -->
         <article class="question-item">
           <div class="question-header">
             <span class="badge-number">Pregunta 1</span>
             <h3 class="question-title">¿Cuál es el tema principal del video? Explica de qué trata.</h3>
           </div>
           <p class="question-answer">
-            El video trata sobre Supabase y muestra cómo funciona de forma práctica. Básicamente, explica cómo usar esta plataforma para crear un proyecto en la nube, armar tu base de datos y conectarla directo con tu página o app sin darte tantas vueltas ni perder tiempo en configuraciones complicadas
+            El video trata sobre Supabase y muestra cómo funciona de forma práctica. Básicamente, explica cómo usar esta plataforma para crear un proyecto en la nube, armar tu base de datos y conectarla directo con tu página o app sin darte tantas vueltas ni perder tiempo en configuraciones complejas.
           </p>
         </article>
 
-        <!-- Pregunta 2 -->
         <article class="question-item">
           <div class="question-header">
             <span class="badge-number">Pregunta 2</span>
@@ -756,7 +760,6 @@
           </p>
         </article>
 
-        <!-- Pregunta 3 -->
         <article class="question-item">
           <div class="question-header">
             <span class="badge-number">Pregunta 3</span>
@@ -773,7 +776,6 @@
           </div>
         </article>
 
-        <!-- Pregunta 4 -->
         <article class="question-item">
           <div class="question-header">
             <span class="badge-number">Pregunta 4</span>
@@ -789,7 +791,6 @@
           </div>
         </article>
 
-        <!-- Pregunta 5 -->
         <article class="question-item">
           <div class="question-header">
             <span class="badge-number">Pregunta 5</span>
@@ -806,7 +807,6 @@
           </div>
         </article>
 
-        <!-- Pregunta 6 -->
         <article class="question-item">
           <div class="question-header">
             <span class="badge-number">Pregunta 6</span>
@@ -817,7 +817,6 @@
           </p>
         </article>
 
-        <!-- Pregunta 7 -->
         <article class="question-item">
           <div class="question-header">
             <span class="badge-number">Pregunta 7</span>
@@ -828,7 +827,6 @@
           </p>
         </article>
 
-        <!-- Pregunta 8 -->
         <article class="question-item">
           <div class="question-header">
             <span class="badge-number">Pregunta 8</span>
@@ -844,7 +842,6 @@
           </div>
         </article>
 
-        <!-- Pregunta 9 -->
         <article class="question-item">
           <div class="question-header">
             <span class="badge-number">Pregunta 9</span>
@@ -858,18 +855,16 @@
           </div>
         </article>
 
-        <!-- Pregunta 10 -->
         <article class="question-item">
           <div class="question-header">
             <span class="badge-number">Pregunta 10</span>
             <h3 class="question-title">¿Cómo aplicaría lo aprendido en un proyecto informático real?</h3>
           </div>
           <p class="question-answer">
-            Lo aplicaría para hacer un sistema de inscripciones para el colegio, un gestor de préstamos de libros para la biblioteca o un registro de notas para el curso (2.º BTI). En vez de ponerme a programar un servidor largo en PHP o Node.js, crearía las tablas en Supabase y conectaría directo el formulario HTML de la web para guardar y consultar los datos al toque roque.
+            Lo aplicaría para hacer un sistema de inscripciones para el colegio, un gestor de préstamos de libros para la biblioteca o un registro de notas para el curso (2.º BTI). En vez de ponerme a programar un servidor largo en PHP o Node.js, crearía las tablas en Supabase y conectaría directo el formulario HTML de la web para guardar y consultar los datos al instante.
           </p>
         </article>
 
-        <!-- Pregunta 11 -->
         <article class="question-item">
           <div class="question-header">
             <span class="badge-number">Pregunta 11</span>
@@ -880,7 +875,6 @@
           </p>
         </article>
 
-        <!-- Pregunta 12 -->
         <article class="question-item">
           <div class="question-header">
             <span class="badge-number">Pregunta 12</span>
@@ -890,7 +884,6 @@
             Aprendí lo fácil que es conectar una base de datos a una página web hoy en día sin complicarse con servidores. Se lo explicaría a un compañero diciéndole: <em>"Es como tener una planilla de Excel en internet que te da una contraseña y un link para que tu página web guarde y lea datos automáticamente sin pedirle permiso a nadie más"</em>.
           </p>
         </article>
-
       </div>
     </div>
   </section>
@@ -924,7 +917,6 @@
         </div>
       </div>
 
-      <!-- Ejemplo de Código -->
       <div class="code-container">
         <div class="code-header">
           <div class="code-dots">
@@ -968,7 +960,6 @@
       <p class="section-desc">Estructuras simuladas de base de datos y peticiones HTTP mostradas en el tutorial</p>
 
       <div class="visual-grid">
-        <!-- Mockup 1: Tabla PostgreSQL -->
         <div class="visual-card">
           <h4>Estructura de la Tabla (PostgreSQL)</h4>
           <p>Así organiza Supabase la información en filas y columnas relacionales:</p>
@@ -1000,7 +991,6 @@
           </table>
         </div>
 
-        <!-- Mockup 2: Simulación de Peticiones REST -->
         <div class="visual-card">
           <h4>Pruebas de la API (REST Client / Postman)</h4>
           <p>Operaciones HTTP realizadas en el video para validar la comunicación:</p>
@@ -1070,5 +1060,270 @@
     </div>
   </footer>
 
+  <!-- CANVAS Y SCRIPT DEL GLOW CURSOR (REACT BITS) -->
+  <canvas id="glow-cursor-canvas"></canvas>
+
+  <script type="module">
+    import { Renderer, Program, Mesh, Triangle } from 'https://cdn.jsdelivr.net/npm/ogl@1.0.11/+esm';
+
+    const MAX_POINTS = 64;
+
+    const config = {
+      color: '#3ECF8E',          // Verde menta Supabase
+      secondaryColor: '#67E8F9', // Cian brillante
+      trailLength: 42,
+      trailWidth: 9,
+      trailTaper: 0.82,
+      followSpeed: 0.18,
+      glowIntensity: 2.1,
+      glowSpread: 1.3,
+      hotspot: 0.7,
+      brightness: 1.3,
+      opacity: 1.0,
+      pulseSpeed: 1.2,
+      noiseStrength: 0.035,
+      idleFade: true,
+      idleTimeout: 700,
+      fadeDuration: 900,
+      blendMode: 'screen',
+      maxDevicePixelRatio: 1.5,
+      enabled: true
+    };
+
+    const VERTEX_SHADER = `
+      attribute vec2 position;
+      attribute vec2 uv;
+      varying vec2 vUv;
+      void main() {
+        vUv = uv;
+        gl_Position = vec4(position, 0.0, 1.0);
+      }
+    `;
+
+    const FRAGMENT_SHADER = `
+      precision highp float;
+      #define MAX_POINTS 64
+
+      uniform vec2 uResolution;
+      uniform vec2 uPoints[MAX_POINTS];
+      uniform float uPointCount;
+      uniform vec3 uColor;
+      uniform vec3 uSecondaryColor;
+      uniform float uTrailWidth;
+      uniform float uTaper;
+      uniform float uGlowIntensity;
+      uniform float uGlowSpread;
+      uniform float uHotspot;
+      uniform float uBrightness;
+      uniform float uOpacity;
+      uniform float uPulseSpeed;
+      uniform float uNoiseStrength;
+      uniform float uNormalBlend;
+      uniform float uTime;
+      uniform float uFade;
+
+      varying vec2 vUv;
+
+      float sRGB(float x) {
+        if (x <= 0.00031308) return 12.92 * x;
+        return 1.055 * pow(x, 1.0 / 2.4) - 0.055;
+      }
+
+      float hash(vec2 p) {
+        return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
+      }
+
+      float filmGrain(vec2 p, float time) {
+        float frame = time * 18.0;
+        float frameIndex = mod(floor(frame), 256.0);
+        float nextFrameIndex = mod(frameIndex + 1.0, 256.0);
+        float blend = fract(frame);
+        blend = blend * blend * (3.0 - 2.0 * blend);
+        vec2 pixel = floor(p);
+        float current = hash(pixel + vec2(frameIndex * 17.0, frameIndex * 31.0));
+        float next = hash(pixel + vec2(nextFrameIndex * 17.0, nextFrameIndex * 31.0));
+        return mix(current, next, blend) * 2.0 - 1.0;
+      }
+
+      void main() {
+        vec2 pixel = vUv * uResolution;
+        float denominator = max(uPointCount - 1.0, 1.0);
+        float strongest = 0.0;
+        float strongestCore = 0.0;
+        float colorWeight = 0.0;
+        vec3 colorSum = vec3(0.0);
+
+        for (int i = 0; i < MAX_POINTS - 1; i++) {
+          float index = float(i);
+          float active = 1.0 - step(uPointCount - 1.0, index);
+          vec2 start = uPoints[i];
+          vec2 end = uPoints[i + 1];
+          vec2 toPixel = pixel - start;
+          vec2 segment = end - start;
+          float along = clamp(dot(toPixel, segment) / max(dot(segment, segment), 0.0001), 0.0, 1.0);
+          float progress = clamp((index + along) / denominator, 0.0, 1.0);
+          float life = pow(max(1.0 - progress, 0.0), mix(0.55, 1.25, uTaper));
+          float width = uTrailWidth * mix(1.0, 0.25, pow(progress, mix(0.55, 1.6, uTaper)));
+          float distanceToTrail = length(toPixel - segment * along);
+          float falloff = max(width * (0.8 + uGlowSpread * 1.4), 0.5);
+          float beam = min(1.0, (falloff * falloff) / (distanceToTrail * distanceToTrail + falloff * falloff));
+          float core = exp(-pow(distanceToTrail / max(width, 0.5), 2.0) * 2.5);
+          float pulseAmount = min(abs(uPulseSpeed), 1.0);
+          float pulse = 1.0 + sin(uTime * uPulseSpeed * 3.0 - progress * 11.0) * 0.16 * pulseAmount;
+          float intensity = (core + beam * uGlowIntensity * 0.55) * life * pulse * active;
+          vec3 segmentColor = mix(uColor, uSecondaryColor, progress);
+
+          strongest = max(strongest, intensity);
+          strongestCore = max(strongestCore, core * life * active);
+          colorSum += segmentColor * intensity;
+          colorWeight += intensity;
+        }
+
+        float grain = filmGrain(pixel, uTime);
+        float noiseAmount = (1.0 - exp(-uNoiseStrength * 2.2)) * 0.4;
+        float alpha = clamp(strongest * uOpacity * uFade, 0.0, 1.0);
+        if (alpha < 0.0005) discard;
+
+        vec3 color = colorSum / max(colorWeight, 0.0001);
+        color = mix(color, vec3(1.0), smoothstep(0.25, 0.95, strongestCore) * uHotspot);
+        float luminance = sRGB(clamp(strongest * uBrightness, 0.0, 1.0));
+        luminance *= 1.0 + grain * noiseAmount;
+        vec3 additiveColor = color * luminance;
+        float normalAlpha = clamp(strongest * uBrightness * uOpacity * uFade, 0.0, 1.0);
+        vec3 normalColor = mix(color, vec3(1.0), smoothstep(0.45, 1.0, strongestCore) * uHotspot * 0.35);
+        gl_FragColor = vec4(mix(additiveColor, normalColor, uNormalBlend), mix(alpha, normalAlpha, uNormalBlend));
+      }
+    `;
+
+    const hexToRgb = hex => {
+      let value = (hex || '').replace('#', '').trim();
+      if (value.length === 3) value = value.split('').map(c => c + c).join('');
+      const parsed = parseInt(value || '000000', 16);
+      return [((parsed >> 16) & 255) / 255, ((parsed >> 8) & 255) / 255, (parsed & 255) / 255];
+    };
+
+    const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
+
+    const canvas = document.getElementById('glow-cursor-canvas');
+    if (canvas) {
+      const renderer = new Renderer({
+        canvas,
+        alpha: true,
+        dpr: Math.min(window.devicePixelRatio || 1, config.maxDevicePixelRatio)
+      });
+      const gl = renderer.gl;
+      gl.clearColor(0, 0, 0, 0);
+
+      const pointData = Array(MAX_POINTS * 2).fill(0);
+      const points = Array.from({ length: MAX_POINTS }, () => ({ x: 0, y: 0 }));
+      const target = { x: 0, y: 0 };
+      const head = { x: 0, y: 0 };
+
+      const program = new Program(gl, {
+        vertex: VERTEX_SHADER,
+        fragment: FRAGMENT_SHADER,
+        uniforms: {
+          uResolution: { value: [window.innerWidth, window.innerHeight] },
+          uPoints: { value: pointData },
+          uPointCount: { value: config.trailLength },
+          uColor: { value: hexToRgb(config.color) },
+          uSecondaryColor: { value: hexToRgb(config.secondaryColor) },
+          uTrailWidth: { value: config.trailWidth },
+          uTaper: { value: config.trailTaper },
+          uGlowIntensity: { value: config.glowIntensity },
+          uGlowSpread: { value: config.glowSpread },
+          uHotspot: { value: config.hotspot },
+          uBrightness: { value: config.brightness },
+          uOpacity: { value: config.opacity },
+          uPulseSpeed: { value: config.pulseSpeed },
+          uNoiseStrength: { value: config.noiseStrength },
+          uNormalBlend: { value: config.blendMode === 'normal' ? 1 : 0 },
+          uTime: { value: 0 },
+          uFade: { value: 0 }
+        },
+        transparent: true,
+        depthTest: false,
+        depthWrite: false
+      });
+
+      const mesh = new Mesh(gl, { geometry: new Triangle(gl), program });
+
+      let initialized = false;
+      let pointerInside = false;
+      let fade = 0;
+      let lastInputTime = performance.now();
+      let lastFrameTime = performance.now();
+
+      const resize = () => {
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+        renderer.setSize(w, h);
+        program.uniforms.uResolution.value = [w, h];
+      };
+
+      const initializeTrail = (x, y) => {
+        target.x = head.x = x;
+        target.y = head.y = y;
+        points.forEach(p => { p.x = x; p.y = y; });
+        initialized = true;
+        fade = 1;
+      };
+
+      const updatePointer = e => {
+        const x = clamp(e.clientX, 0, window.innerWidth);
+        const y = clamp(window.innerHeight - e.clientY, 0, window.innerHeight);
+        if (!initialized) initializeTrail(x, y);
+        target.x = x;
+        target.y = y;
+        pointerInside = true;
+        lastInputTime = performance.now();
+      };
+
+      window.addEventListener('pointermove', updatePointer);
+      window.addEventListener('pointerleave', () => { pointerInside = false; });
+      window.addEventListener('resize', resize);
+      resize();
+
+      const render = now => {
+        const delta = Math.min((now - lastFrameTime) / 16.667, 3);
+        lastFrameTime = now;
+
+        if (initialized) {
+          const headEase = 1 - Math.pow(1 - clamp(config.followSpeed, 0.01, 0.99), delta);
+          const chainBase = clamp(0.28 + config.followSpeed * 0.35, 0.08, 0.92);
+          const chainEase = 1 - Math.pow(1 - chainBase, delta);
+
+          head.x += (target.x - head.x) * headEase;
+          head.y += (target.y - head.y) * headEase;
+          points[0].x = head.x;
+          points[0].y = head.y;
+
+          for (let i = 1; i < MAX_POINTS; i++) {
+            points[i].x += (points[i - 1].x - points[i].x) * chainEase;
+            points[i].y += (points[i - 1].y - points[i].y) * chainEase;
+          }
+
+          for (let i = 0; i < MAX_POINTS; i++) {
+            pointData[i * 2] = points[i].x;
+            pointData[i * 2 + 1] = points[i].y;
+          }
+        }
+
+        const idleFor = now - lastInputTime;
+        const shouldFade = config.idleFade && (!pointerInside || idleFor > config.idleTimeout);
+        const fadeStep = (16.667 * delta) / Math.max(config.fadeDuration, 16);
+        const fadeTarget = initialized && config.enabled && !shouldFade ? 1 : 0;
+        fade += (fadeTarget - fade) * Math.min(1, fadeStep * 7);
+
+        program.uniforms.uFade.value = fade;
+        program.uniforms.uTime.value = now * 0.001;
+
+        renderer.render({ scene: mesh });
+        requestAnimationFrame(render);
+      };
+
+      requestAnimationFrame(render);
+    }
+  </script>
 </body>
 </html>
