@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lo que aprendí del video / Fabri Vázquez</title>
+  
+  <!-- Tipografía Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* =======================================================
+       1. VARIABLES Y RESET GENERAL
+       ======================================================= */
+    :root {
+      --primary-mint: #24b47e;
+      --mint-light: #3ecf8e;
+      --mint-bg: #eafaf1;
+      --dark-navy: #0f172a;
+      --dark-surface: #1e293b;
+      --dark-card: #334155;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --text-light: #f8fafc;
+      --white: #ffffff;
+      --border-color: #e2e8f0;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+      --shadow-hover: 0 20px 30px -10px rgba(36, 180, 126, 0.15);
+      --radius: 12px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8fafc;
+      color: var(--text-main);
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style-position: inside;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1150px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--dark-navy);
+      margin-bottom: 0.8rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 50px;
+      height: 4px;
+      background-color: var(--mint-light);
+      border-radius: 2px;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      font-size: 1.05rem;
+    }
+
+    /* =======================================================
+       2. BARRA DE NAVEGACIÓN (NAVBAR)
+       ======================================================= */
+    .navbar {
+      position: sticky;
+      top: 0;
+      background-color: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--text-light);
+      font-weight: 700;
+      font-size: 1.15rem;
+    }
+
+    .nav-logo span {
+      color: var(--mint-light);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.4rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #94a3b8;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--mint-light);
+    }
+
+    /* =======================================================
+       3. HERO / ENCABEZADO
+       ======================================================= */
+    .hero {
+      background: linear-gradient(135deg, var(--dark-navy) 0%, #0a1120 100%);
+      color: var(--text-light);
+      padding: 5rem 0 4rem 0;
+      border-bottom: 4px solid var(--primary-mint);
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background-color: rgba(62, 207, 142, 0.15);
+      color: var(--mint-light);
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+      border: 1px solid rgba(62, 207, 142, 0.3);
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      line-height: 1.2;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 span {
+      color: var(--mint-light);
+    }
+
+    .hero-info-card {
+      background: var(--dark-surface);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius);
+      padding: 1.8rem;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-info-card h3 {
+      font-size: 1.1rem;
+      color: var(--mint-light);
+      margin-bottom: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 0.5rem;
+    }
+
+    .info-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      font-size: 0.92rem;
+    }
+
+    .info-list li strong {
+      color: #cbd5e1;
+    }
+
+    /* =======================================================
+       4. SECCIÓN INTRODUCCIÓN
+       ======================================================= */
+    .section {
+      padding: 4.5rem 0;
+    }
+
+    .intro-box {
+      background-color: var(--white);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      box-shadow: var(--shadow);
+      border-left: 6px solid var(--primary-mint);
+    }
+
+    .intro-box p {
+      font-size: 1.1rem;
+      color: #334155;
+      margin-bottom: 1rem;
+    }
+
+    /* =======================================================
+       5. TARJETAS DE CONCEPTOS
+       ======================================================= */
+    .concepts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .concept-card {
+      background-color: var(--white);
+      border-radius: var(--radius);
+      padding: 2rem;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .concept-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--mint-light);
+    }
+
+    .concept-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background-color: var(--mint-bg);
+      color: var(--primary-mint);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+    }
+
+    .concept-card h3 {
+      font-size: 1.25rem;
+      color: var(--dark-navy);
+      margin-bottom: 0.8rem;
+    }
+
+    .concept-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* =======================================================
+       6. CUESTIONARIO (12 PREGUNTAS)
+       ======================================================= */
+    .questions-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .question-item {
+      background-color: var(--white);
+      border-radius: var(--radius);
+      padding: 1.8rem 2rem;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .question-item:hover {
+      border-color: #cbd5e1;
+    }
+
+    .question-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .badge-number {
+      background-color: var(--dark-navy);
+      color: var(--mint-light);
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    .question-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--dark-navy);
+    }
+
+    .question-answer {
+      color: #334155;
+      font-size: 0.98rem;
+      line-height: 1.7;
+      padding-left: 3rem;
+    }
+
+    .question-answer ul {
+      margin-top: 0.6rem;
+      margin-left: 0.5rem;
+    }
+
+    .question-answer li {
+      margin-bottom: 0.4rem;
+    }
+
+    /* =======================================================
+       7. SECCIÓN APLICACIÓN PRÁCTICA Y CÓDIGO
+       ======================================================= */
+    .steps-timeline {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .step-box {
+      background-color: var(--white);
+      padding: 1.8rem;
+      border-radius: var(--radius);
+      border-top: 4px solid var(--primary-mint);
+      box-shadow: var(--shadow);
+    }
+
+    .step-num {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--mint-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .step-box h4 {
+      font-size: 1.05rem;
+      margin-bottom: 0.6rem;
+      color: var(--dark-navy);
+    }
+
+    .step-box p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .code-container {
+      background-color: var(--dark-navy);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .code-header {
+      background-color: var(--dark-surface);
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #94a3b8;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.85rem;
+    }
+
+    .code-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .code-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .dot-red { background-color: #ef4444; }
+    .dot-yellow { background-color: #eab308; }
+    .dot-green { background-color: #22c55e; }
+
+    pre {
+      padding: 1.5rem;
+      color: #e2e8f0;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.9rem;
+      overflow-x: auto;
+    }
+
+    .token-keyword { color: #f43f5e; }
+    .token-fn { color: #38bdf8; }
+    .token-str { color: var(--mint-light); }
+    .token-comment { color: #64748b; font-style: italic; }
+
+    /* =======================================================
+       8. RECURSOS VISUALES / MOCKUPS
+       ======================================================= */
+    .visual-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .visual-card {
+      background-color: var(--white);
+      border-radius: var(--radius);
+      padding: 1.8rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-color);
+    }
+
+    .visual-card h4 {
+      font-size: 1.1rem;
+      color: var(--dark-navy);
+      margin-bottom: 0.4rem;
+    }
+
+    .visual-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+    }
+
+    /* Mockup visual de tabla PostgreSQL */
+    .db-table-mockup {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .db-table-mockup th {
+      background-color: var(--dark-surface);
+      color: var(--mint-light);
+      padding: 0.7rem;
+      text-align: left;
+      border: 1px solid #475569;
+    }
+
+    .db-table-mockup td {
+      padding: 0.7rem;
+      border: 1px solid var(--border-color);
+      color: #334155;
+    }
+
+    .db-table-mockup tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+
+    /* Mockup petición Postman */
+    .rest-mockup {
+      background-color: #0b1120;
+      border-radius: 8px;
+      padding: 1rem;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.82rem;
+      color: #94a3b8;
+    }
+
+    .rest-line {
+      display: flex;
+      gap: 0.6rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .method-badge {
+      color: var(--white);
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.75rem;
+    }
+
+    .get-badge { background-color: #0284c7; }
+    .post-badge { background-color: #16a34a; }
+
+    /* =======================================================
+       9. CONCLUSIÓN Y FUENTES
+       ======================================================= */
+    .conclusion-box {
+      background: linear-gradient(135deg, var(--white) 0%, var(--mint-bg) 100%);
+      border-radius: var(--radius);
+      padding: 2.8rem;
+      border: 1px solid rgba(62, 207, 142, 0.4);
+      box-shadow: var(--shadow);
+    }
+
+    .conclusion-box p {
+      font-size: 1.05rem;
+      color: #334155;
+      margin-bottom: 1.2rem;
+    }
+
+    .fuentes-card {
+      background-color: var(--white);
+      border-radius: var(--radius);
+      padding: 2.2rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .btn-video {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background-color: var(--primary-mint);
+      color: var(--white);
+      padding: 0.75rem 1.6rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+
+    .btn-video:hover {
+      background-color: #1b8a5f;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(36, 180, 126, 0.3);
+    }
+
+    /* =======================================================
+       10. PIE DE PÁGINA (FOOTER)
+       ======================================================= */
+    footer {
+      background-color: var(--dark-navy);
+      color: #94a3b8;
+      padding: 3rem 0;
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    footer p {
+      margin-bottom: 0.4rem;
+    }
+
+    .footer-badge {
+      color: var(--mint-light);
+      font-weight: 500;
+    }
+
+    /* =======================================================
+       11. RESPONSIVE DESIGN (MEDIA QUERIES)
+       ======================================================= */
+    @media (max-width: 900px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .question-answer {
+        padding-left: 0;
+        margin-top: 0.6rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none; /* En pantallas pequeñas se prioriza la lectura continua */
+      }
+
+      .navbar-container {
+        justify-content: center;
+      }
+
+      .section {
+        padding: 3.2rem 0;
+      }
+
+      .section-title {
+        font-size: 1.7rem;
+      }
+
+      .hero {
+        padding: 3.5rem 0;
+      }
+
+      .intro-box, .question-item, .conclusion-box {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= BARRA DE NAVEGACIÓN ================= -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <a href="#" class="nav-logo">
+        <span>⚡</span> Supabase / CNAE
+      </a>
+      <ul class="nav-links">
+        <li><a href="#introduccion">Introducción</a></li>
+        <li><a href="#conceptos">Conceptos</a></li>
+        <li><a href="#cuestionario">Cuestionario</a></li>
+        <li><a href="#aplicacion">Práctica</a></li>
+        <li><a href="#conclusion">Conclusión</a></li>
+        <li><a href="#fuentes">Fuentes</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ================= HERO / ENCABEZADO ================= -->
+  <header class="hero">
+    <div class="container hero-content">
+      <div>
+        <span class="hero-tag">Trabajo Práctico Individual</span>
+        <h1>Lo que aprendí del video<br><span>Fabri Vázquez</span></h1>
+        <p style="color: #cbd5e1; font-size: 1.1rem; max-width: 540px;">
+          Resumen técnico, conceptos fundamentales y aplicación práctica de Supabase como alternativa libre a Firebase para desarrollo web moderno.
+        </p>
+      </div>
+      <div class="hero-info-card">
+        <h3>Ficha Académica</h3>
+        <ul class="info-list">
+          <li><strong>Estudiante:</strong> Fabri Vázquez</li>
+          <li><strong>Curso:</strong> 2.º BTI (Bachillerato Técnico en Informática)</li>
+          <li><strong>Materia:</strong> Software / Desarrollo Web</li>
+          <li><strong>Institución:</strong> Colegio Nacional EMD Asunción Escalada</li>
+          <li><strong>Tema:</strong> Backend as a Service & REST APIs con Supabase</li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= SECCIÓN INTRODUCCIÓN ================= -->
+  <section id="introduccion" class="section">
+    <div class="container">
+      <h2 class="section-title">Introducción</h2>
+      <p class="section-desc">Acerca del video analizado y su propósito</p>
+      
+      <div class="intro-box">
+        <p>
+          En este trabajo práctico analicé el video <strong>«Supabase, Tutorial Práctico y Overview (REST API)»</strong> del canal de tecnología <strong>Fazt Code</strong>. 
+        </p>
+        <p>
+          El video es una guía práctica que enseña cómo dejar de perder días enteros configurando servidores tradicionales, base de datos y endpoints manuales. Explica cómo utilizar <strong>Supabase</strong>, una plataforma <em>BaaS (Backend as a Service)</em> de código abierto que monta automáticamente una base de datos PostgreSQL en la nube, autogenera una API REST completa y ofrece autenticación lista para conectar directo al frontend.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECCIÓN CONCEPTOS ================= -->
+  <section id="conceptos" class="section" style="background-color: #f1f5f9;">
+    <div class="container">
+      <h2 class="section-title">Conceptos Fundamentales</h2>
+      <p class="section-desc">Los cinco pilares técnicos explicados de manera sencilla</p>
+
+      <div class="concepts-grid">
+        <!-- Tarjeta 1 -->
+        <div class="concept-card">
+          <div class="concept-icon">☁️</div>
+          <h3>BaaS (Backend as a Service)</h3>
+          <p>Es como alquilar un backend completo ya programado y listo en la nube. Te da base de datos, seguridad y login para que vos como desarrollador solo te enfoques en el diseño y la interfaz del usuario.</p>
+        </div>
+
+        <!-- Tarjeta 2 -->
+        <div class="concept-card">
+          <div class="concept-icon">⚡</div>
+          <h3>Supabase</h3>
+          <p>La alternativa de código abierto a Firebase. Te brinda un panel web para administrar datos en tiempo real, crear tablas interactivas y obtener endpoints listos para consumir sin codear el servidor.</p>
+        </div>
+
+        <!-- Tarjeta 3 -->
+        <div class="concept-card">
+          <div class="concept-icon">🐘</div>
+          <h3>PostgreSQL</h3>
+          <p>Un motor de base de datos relacional potente, seguro y clásico. Guarda la información en tablas organizadas por filas y columnas, con tipado estricto (números, texto, booleanos, fechas).</p>
+        </div>
+
+        <!-- Tarjeta 4 -->
+        <div class="concept-card">
+          <div class="concept-icon">🔌</div>
+          <h3>REST API</h3>
+          <p>El "puente" de comunicación entre tu sitio web y la base de datos. Permite pedir o mandar datos a través de peticiones HTTP estándares como <code>GET</code>, <code>POST</code>, <code>PATCH</code> y <code>DELETE</code>.</p>
+        </div>
+
+        <!-- Tarjeta 5 -->
+        <div class="concept-card">
+          <div class="concept-icon">🔑</div>
+          <h3>API Key / Anon Key</h3>
+          <p>Una clave pública de identificación que se coloca en el código de tu sitio web para que Supabase sepa a qué proyecto pertenece la petición y qué permisos de lectura o escritura tiene permitido ejecutar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECCIÓN CUESTIONARIO ================= -->
+  <section id="cuestionario" class="section">
+    <div class="container">
+      <h2 class="section-title">Cuestionario Resuelto</h2>
+      <p class="section-desc">Las 12 preguntas resueltas con claridad y lenguaje fluido</p>
+
+      <div class="questions-wrapper">
+        
+        <!-- Pregunta 1 -->
+        <article class="question-item">
+          <div class="question-header">
+            <span class="badge-number">Pregunta 1</span>
+            <h3 class="question-title">¿Cuál es el tema principal del video? Explica de qué trata.</h3>
+          </div>
+          <p class="question-answer">
+            El video trata sobre Supabase y muestra cómo funciona de forma práctica. Básicamente, explica cómo usar esta plataforma para crear un proyecto en la nube, armar tu base de datos y conectarla directo con tu página o app sin darte tantas vueltas ni perder tiempo en configuraciones complejas.
+          </p>
+        </article>
+
+        <!-- Pregunta 2 -->
+        <article class="question-item">
+          <div class="question-header">
+            <span class="badge-number">Pregunta 2</span>
+            <h3 class="question-title">¿Qué problema o necesidad tecnológica se aborda?</h3>
+          </div>
+          <p class="question-answer">
+            Aborda el quilombo y el tiempo que lleva armar un backend desde cero. Normalmente tenés que configurar un servidor, instalar una base de datos y escribir un montón de código para poder guardar o leer datos. Supabase te resuelve todo eso rápido y sin complicarte la vida, entregando una solución "serveless" inmediata.
+          </p>
+        </article>
+
+        <!-- Pregunta 3 -->
+        <article class="question-item">
+          <div class="question-header">
+            <span class="badge-number">Pregunta 3</span>
+            <h3 class="question-title">¿Cuáles son los cinco conceptos más importantes? Define cada uno.</h3>
+          </div>
+          <div class="question-answer">
+            <ul>
+              <li><strong>BaaS (Backend as a Service):</strong> Es como alquilar el backend ya armado en la nube para que vos solo te preocupes por el diseño y el frontend.</li>
+              <li><strong>Supabase:</strong> Es la herramienta de código abierto que hace de "backend preparado", bastante parecida a Firebase pero usando bases de datos tradicionales.</li>
+              <li><strong>PostgreSQL:</strong> Es el motor de base de datos relacional (con tablas, filas y columnas) que usa Supabase por detrás.</li>
+              <li><strong>REST API:</strong> Es el "puente" o caminito que conecta tu página web con la base de datos para pedir o guardar información mediante peticiones HTTP.</li>
+              <li><strong>API Key / Anon Key:</strong> Es como una contraseña pública que le ponés a tu página para que Supabase sepa que la petición viene de tu proyecto.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Pregunta 4 -->
+        <article class="question-item">
+          <div class="question-header">
+            <span class="badge-number">Pregunta 4</span>
+            <h3 class="question-title">¿Qué herramientas, programas o tecnologías se mencionan y para qué sirven?</h3>
+          </div>
+          <div class="question-answer">
+            <ul>
+              <li><strong>Panel de Supabase:</strong> La página web oficial de Supabase donde creás los proyectos, administrás las tablas y configurás la seguridad.</li>
+              <li><strong>PostgreSQL:</strong> La base de datos donde se almacenan y relacionan los datos reales.</li>
+              <li><strong>VS Code y Rest Client / Postman:</strong> Programas o extensiones que se usan para probar si los datos están entrando y saliendo bien de la API antes de conectarla al código final.</li>
+              <li><strong>JavaScript:</strong> El lenguaje de programación que usamos en el frontend para conectar la web con las claves y los endpoints de Supabase.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Pregunta 5 -->
+        <article class="question-item">
+          <div class="question-header">
+            <span class="badge-number">Pregunta 5</span>
+            <h3 class="question-title">¿Qué procedimientos o pasos se explican? Preséntalos en orden.</h3>
+          </div>
+          <div class="question-answer">
+            <ol style="margin-left: 1.2rem;">
+              <li>Crear una cuenta en Supabase y armar un proyecto nuevo.</li>
+              <li>Crear una tabla en la interfaz (por ejemplo, una tabla de tareas o productos) y definir sus columnas y tipos de datos.</li>
+              <li>Copiar la URL del proyecto y la API Key pública desde la configuración.</li>
+              <li>Probar la conexión enviando datos desde un cliente de pruebas (como Rest Client o Postman).</li>
+              <li>Hacer las operaciones básicas del CRUD: traer datos (GET), guardar nuevos (POST), actualizar (PUT/PATCH) y borrar (DELETE).</li>
+            </ol>
+          </div>
+        </article>
+
+        <!-- Pregunta 6 -->
+        <article class="question-item">
+          <div class="question-header">
+            <span class="badge-number">Pregunta 6</span>
+            <h3 class="question-title">¿Qué ejemplos prácticos aparecen? Explica uno detalladamente.</h3>
+          </div>
+          <p class="question-answer">
+            Muestran cómo armar una lista de tareas (tasks) y una tabla de productos. En la web de Supabase creás la tabla con datos como el título de la tarea y si está terminada o no. Después, desde un programa de pruebas mandás un mensaje en formato JSON con la tarea nueva (por ejemplo, <code>{"title": "Estudiar para el examen"}</code>) y al toque se guarda sola en la base de datos sin que hayas tenido que escribir una sola línea de código en un servidor.
+          </p>
+        </article>
+
+        <!-- Pregunta 7 -->
+        <article class="question-item">
+          <div class="question-header">
+            <span class="badge-number">Pregunta 7</span>
+            <h3 class="question-title">¿Qué conocimientos previos son necesarios para comprender lo explicado?</h3>
+          </div>
+          <p class="question-answer">
+            Con saber lo básico de HTML, CSS y JavaScript ya estás bien. También ayuda tener una idea general de cómo se organizan las tablas de datos (filas, columnas, tipos de datos) y saber qué es una petición web (como cuando abrís una página o enviás un formulario mediante HTTP).
+          </p>
+        </article>
+
+        <!-- Pregunta 8 -->
+        <article class="question-item">
+          <div class="question-header">
+            <span class="badge-number">Pregunta 8</span>
+            <h3 class="question-title">¿Qué ventajas o beneficios ofrece la tecnología o procedimiento?</h3>
+          </div>
+          <div class="question-answer">
+            <ul>
+              <li>Te ahorra muchísimo tiempo de desarrollo al evitar configurar Node.js, Express o servidores manuales.</li>
+              <li>Es gratis para proyectos chicos, escolares y prototipos de prueba.</li>
+              <li>Es de código abierto, así que no te quedás "atrapado" con una sola empresa propietaria.</li>
+              <li>Automáticamente te crea la API REST y la documentación en cuanto creás cualquier tabla en el panel.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Pregunta 9 -->
+        <article class="question-item">
+          <div class="question-header">
+            <span class="badge-number">Pregunta 9</span>
+            <h3 class="question-title">¿Qué dificultades, errores o precauciones deben considerarse?</h3>
+          </div>
+          <div class="question-answer">
+            <ul>
+              <li><strong>Cuidado con las claves:</strong> La <em>anon key</em> se puede usar en la web del cliente, pero la clave <em>service_role</em> (que tiene superpoderes y se salta las reglas de seguridad) jamás debe ponerse en el código que ve el usuario.</li>
+              <li><strong>Políticas de seguridad (RLS):</strong> Ojo con los permisos de Row Level Security; si los activás y no creás una regla que permita leer o insertar (por ejemplo para usuarios anónimos o autenticados), Supabase te bloqueará las peticiones por seguridad devolviendo un array vacío o un error de acceso denegado.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Pregunta 10 -->
+        <article class="question-item">
+          <div class="question-header">
+            <span class="badge-number">Pregunta 10</span>
+            <h3 class="question-title">¿Cómo aplicaría lo aprendido en un proyecto informático real?</h3>
+          </div>
+          <p class="question-answer">
+            Lo aplicaría para hacer un sistema de inscripciones para el colegio, un gestor de préstamos de libros para la biblioteca o un registro de notas para el curso (2.º BTI). En vez de ponerme a programar un servidor largo en PHP o Node.js, crearía las tablas en Supabase y conectaría directo el formulario HTML de la web para guardar y consultar los datos al instante.
+          </p>
+        </article>
+
+        <!-- Pregunta 11 -->
+        <article class="question-item">
+          <div class="question-header">
+            <span class="badge-number">Pregunta 11</span>
+            <h3 class="question-title">¿Qué parte del video consideras más importante y por qué?</h3>
+          </div>
+          <p class="question-answer">
+            La parte donde muestra cómo se genera la API automáticamente al crear una tabla en la base de datos. Me parece lo más clave porque ahí te das cuenta de todo el trabajo que te ahorrás al no tener que programar los endpoints a mano, entregándote además la documentación lista con ejemplos de código en JavaScript y cURL.
+          </p>
+        </article>
+
+        <!-- Pregunta 12 -->
+        <article class="question-item">
+          <div class="question-header">
+            <span class="badge-number">Pregunta 12</span>
+            <h3 class="question-title">¿Qué conocimientos nuevos adquiriste y cómo los explicarías a otra persona?</h3>
+          </div>
+          <p class="question-answer">
+            Aprendí lo fácil que es conectar una base de datos a una página web hoy en día sin complicarse con servidores. Se lo explicaría a un compañero diciéndole: <em>"Es como tener una planilla de Excel en internet que te da una contraseña y un link para que tu página web guarde y lea datos automáticamente sin pedirle permiso a nadie más"</em>.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECCIÓN APLICACIÓN PRÁCTICA ================= -->
+  <section id="aplicacion" class="section" style="background-color: #f1f5f9;">
+    <div class="container">
+      <h2 class="section-title">Aplicación Práctica</h2>
+      <p class="section-desc">Paso a paso para crear una tabla y consumirla desde JavaScript</p>
+
+      <div class="steps-timeline">
+        <div class="step-box">
+          <div class="step-num">01</div>
+          <h4>Crear la Tabla</h4>
+          <p>En el Table Editor de Supabase creamos la tabla <code>products</code> con columnas: <code>id</code> (int8), <code>name</code> (varchar) y <code>created_at</code>.</p>
+        </div>
+        <div class="step-box">
+          <div class="step-num">02</div>
+          <h4>Configurar RLS</h4>
+          <p>Habilitamos Row Level Security y creamos una regla básica ("Enable read access to everyone") para permitir que el frontend lea los datos.</p>
+        </div>
+        <div class="step-box">
+          <div class="step-num">03</div>
+          <h4>Copiar Claves</h4>
+          <p>En Settings &gt; API copiamos la <strong>Project URL</strong> y la clave pública <strong>anon / public key</strong> para pegarlas en nuestro script.</p>
+        </div>
+        <div class="step-box">
+          <div class="step-num">04</div>
+          <h4>Consumir vía Fetch</h4>
+          <p>Llamamos al endpoint desde JavaScript usando <code>fetch()</code> enviando el header <code>apikey</code> para traer los datos en formato JSON.</p>
+        </div>
+      </div>
+
+      <!-- Ejemplo de Código -->
+      <div class="code-container">
+        <div class="code-header">
+          <div class="code-dots">
+            <span class="code-dot dot-red"></span>
+            <span class="code-dot dot-yellow"></span>
+            <span class="code-dot dot-green"></span>
+          </div>
+          <span>app.js (Consumo de la API con JavaScript nativo)</span>
+        </div>
+        <pre><code><span class="token-comment">// 1. Definimos las credenciales de nuestro proyecto de Supabase</span>
+<span class="token-keyword">const</span> SUPABASE_URL = <span class="token-str">"https://xyzcompany.supabase.co/rest/v1"</span>;
+<span class="token-keyword">const</span> ANON_KEY = <span class="token-str">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."</span>;
+
+<span class="token-comment">// 2. Función para listar productos usando el endpoint automático</span>
+<span class="token-keyword">async function</span> <span class="token-fn">cargarProductos</span>() {
+  <span class="token-keyword">try</span> {
+    <span class="token-keyword">const</span> response = <span class="token-keyword">await</span> <span class="token-fn">fetch</span>(<span class="token-str">`${SUPABASE_URL}/products?select=*`</span>, {
+      method: <span class="token-str">"GET"</span>,
+      headers: {
+        <span class="token-str">"apikey"</span>: ANON_KEY,
+        <span class="token-str">"Authorization"</span>: <span class="token-str">`Bearer ${ANON_KEY}`</span>
+      }
+    });
+
+    <span class="token-keyword">const</span> productos = <span class="token-keyword">await</span> response.<span class="token-fn">json</span>();
+    console.<span class="token-fn">log</span>(<span class="token-str">"Productos obtenidos con éxito:"</span>, productos);
+  } <span class="token-keyword">catch</span> (error) {
+    console.<span class="token-fn">error</span>(<span class="token-str">"Error al conectar con Supabase:"</span>, error);
+  }
+}
+
+<span class="token-fn">cargarProductos</span>();</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECCIÓN RECURSOS VISUALES ================= -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Recursos Visuales y Diagramas</h2>
+      <p class="section-desc">Estructuras simuladas de base de datos y peticiones HTTP mostradas en el tutorial</p>
+
+      <div class="visual-grid">
+        <!-- Mockup 1: Tabla PostgreSQL -->
+        <div class="visual-card">
+          <h4>Estructura de la Tabla (PostgreSQL)</h4>
+          <p>Así organiza Supabase la información en filas y columnas relacionales:</p>
+          <table class="db-table-mockup">
+            <thead>
+              <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>created_at</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Laptop Gaming</td>
+                <td>2026-10-08 10:15</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Monitor LG 24"</td>
+                <td>2026-10-08 10:20</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Mouse Gamer RGB</td>
+                <td>2026-10-08 10:35</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Mockup 2: Simulación de Peticiones REST -->
+        <div class="visual-card">
+          <h4>Pruebas de la API (REST Client / Postman)</h4>
+          <p>Operaciones HTTP realizadas en el video para validar la comunicación:</p>
+          <div class="rest-mockup">
+            <div class="rest-line">
+              <span class="method-badge get-badge">GET</span>
+              <span>/rest/v1/products?select=*</span>
+            </div>
+            <div style="color: #64748b; margin-bottom: 0.8rem;">Status: 200 OK (Trae todos los registros)</div>
+
+            <div class="rest-line">
+              <span class="method-badge post-badge">POST</span>
+              <span>/rest/v1/products</span>
+            </div>
+            <div style="color: #64748b;">Payload: {"name": "Teclado Mecánico"} &rarr; 201 Created</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECCIÓN CONCLUSIÓN ================= -->
+  <section id="conclusion" class="section" style="background-color: #f1f5f9;">
+    <div class="container">
+      <h2 class="section-title">Conclusión Personal</h2>
+      <p class="section-desc">Reflexión sobre el impacto de estas herramientas en nuestra formación</p>
+
+      <div class="conclusion-box">
+        <p>
+          Conocer tecnologías como <strong>Supabase</strong> cambia por completo la perspectiva que tenemos como estudiantes del Bachillerato Técnico en Informática (BTI). Durante mucho tiempo se nos enseñó que para hacer andar una aplicación completa con base de datos era obligatorio montar servidores difíciles, lidiar con puertos, crear scripts en PHP o armar APIs línea por línea en Node.js.
+        </p>
+        <p>
+          Las plataformas BaaS no vienen a reemplazar el conocimiento técnico de fondo, sino a <strong>democratizar y acelerar el desarrollo</strong>. Para proyectos del colegio, ferias de ciencias o emprendimientos reales, nos permiten crear prototipos funcionales en un fin de semana. Como futuros programadores, dominar tanto las bases de datos relacionales como estas herramientas modernas en la nube nos da una ventaja enorme para adaptarnos al mercado profesional actual.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECCIÓN FUENTES ================= -->
+  <section id="fuentes" class="section">
+    <div class="container">
+      <h2 class="section-title">Fuentes y Referencias</h2>
+      <p class="section-desc">Material de consulta utilizado para la realización del trabajo</p>
+
+      <div class="fuentes-card">
+        <div>
+          <h3 style="font-size: 1.2rem; color: var(--dark-navy); margin-bottom: 0.3rem;">Video Tutorial de Fazt Code</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">
+            «Supabase, Tutorial Práctico y Overview (REST API)» — Fazt Code (YouTube).
+          </p>
+        </div>
+        <a href="https://www.youtube.com/watch?v=4yZXhyj8eOU" target="_blank" rel="noopener noreferrer" class="btn-video">
+          ▶ Ver video en YouTube
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PIE DE PÁGINA ================= -->
+  <footer>
+    <div class="container">
+      <p><strong>Lo que aprendí del video / Fabri Vázquez</strong></p>
+      <p class="footer-badge">2.º BTI — Software / Desarrollo Web</p>
+      <p style="font-size: 0.8rem; margin-top: 0.6rem; color: #64748b;">
+        Colegio Nacional EMD Asunción Escalada &bull; Asunción, Paraguay
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
